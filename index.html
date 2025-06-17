@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Dadavai! 🎉</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Countdown Timer Overlay -->
+    <div class="countdown-overlay" id="countdown-overlay">
+        <div class="countdown-container">
+            <h1 class="countdown-title">Dadavai's Birthday Countdown</h1>
+            <div class="countdown-timer" id="countdown-timer">11:59:00</div>
+            <p class="countdown-message">Get ready for the celebration! 🎉</p>
+        </div>
+    </div>
+
+    <!-- Birthday Content (hidden until countdown ends) -->
+    <div class="birthday-content" id="birthday-content">
+        <!-- Background Sparkles Canvas -->
+        <canvas id="sparkles-canvas"></canvas>
+        
+        <!-- Music Control -->
+        <div class="music-control">
+        <button id="music-toggle" class="music-btn">
+            <i class="fas fa-music"></i>
+        </button>
+        <audio id="birthday-music" loop>
+            <source src="https://www.soundjay.com/misc/sounds/magic-chime-02.wav" type="audio/wav">
+            <!-- Fallback for browsers that don't support the audio element -->
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="birthday-header">
+            <div class="confetti-container" id="confetti-container"></div>
+            <h1 class="main-title">
+                <span class="happy">Happy</span>
+                <span class="birthday">Birthday</span>
+                <span class="name">Dadavai!</span>
+            </h1>
+            <div class="subtitle">
+                <p class="celebration-text">🎉 Your special day is here! 🎉</p>
+            </div>
+        </header>
+
+        <!-- Photo Gallery -->
+        <section class="photo-gallery">
+            <h2 class="gallery-title">Memories with Dadavai ✨</h2>
+            <div class="photos-container">
+                <div class="polaroid" data-caption="Happy Moments">
+                    <svg width="150" height="150" viewBox="0 0 150 150">
+                        <rect width="150" height="150" fill="#f0f8ff"/>
+                        <circle cx="75" cy="60" r="25" fill="#ffb6c1"/>
+                        <circle cx="60" cy="55" r="3" fill="#333"/>
+                        <circle cx="90" cy="55" r="3" fill="#333"/>
+                        <path d="M 65 70 Q 75 80 85 70" stroke="#333" stroke-width="2" fill="none"/>
+                        <text x="75" y="130" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">Dadavai</text>
+                        <path d="M 30 20 L 50 10 L 70 20 L 50 30 Z" fill="#ff69b4"/>
+                        <path d="M 80 25 L 100 15 L 120 25 L 100 35 Z" fill="#ff1493"/>
+                    </svg>
+                </div>
+                <div class="polaroid" data-caption="Best Brother">
+                    <svg width="150" height="150" viewBox="0 0 150 150">
+                        <rect width="150" height="150" fill="#fff5ee"/>
+                        <circle cx="75" cy="65" r="30" fill="#ffd700"/>
+                        <circle cx="65" cy="60" r="4" fill="#333"/>
+                        <circle cx="85" cy="60" r="4" fill="#333"/>
+                        <path d="M 60 75 Q 75 90 90 75" stroke="#333" stroke-width="3" fill="none"/>
+                        <text x="75" y="125" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">Celebration</text>
+                        <polygon points="75,20 80,30 90,30 82,38 85,48 75,43 65,48 68,38 60,30 70,30" fill="#ff4500"/>
+                    </svg>
+                </div>
+                <div class="polaroid" data-caption="Special Day">
+                    <svg width="150" height="150" viewBox="0 0 150 150">
+                        <rect width="150" height="150" fill="#f5f5dc"/>
+                        <rect x="60" y="80" width="30" height="40" fill="#8b4513"/>
+                        <rect x="55" y="75" width="40" height="10" fill="#ff69b4"/>
+                        <rect x="50" y="70" width="50" height="10" fill="#98fb98"/>
+                        <line x1="75" y1="70" x2="75" y2="50" stroke="#ffd700" stroke-width="3"/>
+                        <ellipse cx="75" cy="50" rx="5" ry="8" fill="#ff4500"/>
+                        <text x="75" y="135" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">Birthday Cake</text>
+                        <circle cx="30" cy="30" r="8" fill="#ff1493" opacity="0.7"/>
+                        <circle cx="120" cy="40" r="6" fill="#00bfff" opacity="0.7"/>
+                    </svg>
+                </div>
+                <div class="polaroid" data-caption="Love & Joy">
+                    <svg width="150" height="150" viewBox="0 0 150 150">
+                        <rect width="150" height="150" fill="#fffacd"/>
+                        <path d="M 75 100 C 85 90, 105 90, 105 75 C 105 65, 95 55, 85 60 C 80 55, 70 55, 65 60 C 55 55, 45 65, 45 75 C 45 90, 65 90, 75 100 Z" fill="#ff1493"/>
+                        <text x="75" y="125" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">With Love</text>
+                        <circle cx="40" cy="40" r="3" fill="#ffd700"/>
+                        <circle cx="110" cy="35" r="3" fill="#ffd700"/>
+                        <circle cx="120" cy="60" r="3" fill="#ffd700"/>
+                        <circle cx="30" cy="70" r="3" fill="#ffd700"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Birthday Cake -->
+        <section class="cake-section">
+            <div class="birthday-cake" id="birthday-cake">
+                <div class="cake-layer cake-bottom"></div>
+                <div class="cake-layer cake-middle"></div>
+                <div class="cake-layer cake-top"></div>
+                <div class="candles">
+                    <div class="candle" data-candle="1">
+                        <div class="flame"></div>
+                        <div class="wick"></div>
+                    </div>
+                    <div class="candle" data-candle="2">
+                        <div class="flame"></div>
+                        <div class="wick"></div>
+                    </div>
+                    <div class="candle" data-candle="3">
+                        <div class="flame"></div>
+                        <div class="wick"></div>
+                    </div>
+                    <div class="candle" data-candle="4">
+                        <div class="flame"></div>
+                        <div class="wick"></div>
+                    </div>
+                    <div class="candle" data-candle="5">
+                        <div class="flame"></div>
+                        <div class="wick"></div>
+                    </div>
+                </div>
+                <div class="cake-message">Click the cake to blow out candles!</div>
+            </div>
+        </section>
+
+        <!-- Interactive Balloons -->
+        <section class="balloons-section">
+            <div class="balloon-container">
+                <div class="balloon balloon-red" data-color="red">
+                    <div class="balloon-body"></div>
+                    <div class="balloon-string"></div>
+                </div>
+                <div class="balloon balloon-blue" data-color="blue">
+                    <div class="balloon-body"></div>
+                    <div class="balloon-string"></div>
+                </div>
+                <div class="balloon balloon-yellow" data-color="yellow">
+                    <div class="balloon-body"></div>
+                    <div class="balloon-string"></div>
+                </div>
+                <div class="balloon balloon-green" data-color="green">
+                    <div class="balloon-body"></div>
+                    <div class="balloon-string"></div>
+                </div>
+                <div class="balloon balloon-purple" data-color="purple">
+                    <div class="balloon-body"></div>
+                    <div class="balloon-string"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Birthday Message -->
+        <section class="message-section">
+            <div class="birthday-message">
+                <h2 class="message-title">Dear Dadavai,</h2>
+                <p class="message-text">
+                    On this special day, may all your dreams come true and may happiness surround you always! 
+                    You deserve all the wonderful things life has to offer. Here's to another year of amazing adventures, 
+                    laughter, and precious memories! 🎂✨
+                </p>
+                <div class="wishes">
+                    <span class="wish">🌟 Make a wish! 🌟</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Elements -->
+        <section class="interactive-section">
+            <button class="surprise-btn" id="surprise-btn">
+                <i class="fas fa-gift"></i>
+                Click for a Surprise!
+            </button>
+            <button class="fireworks-btn" id="fireworks-btn">
+                <i class="fas fa-rocket"></i>
+                Launch Fireworks!
+            </button>
+        </section>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-icon">🎈</div>
+            <div class="floating-icon">🎁</div>
+            <div class="floating-icon">🎂</div>
+            <div class="floating-icon">🎉</div>
+            <div class="floating-icon">⭐</div>
+            <div class="floating-icon">🎊</div>
+        </div>
+
+        <!-- Floating Hearts -->
+        <div class="floating-hearts" id="floating-hearts"></div>
+        </div>
+
+        <!-- Fireworks Canvas -->
+        <canvas id="fireworks-canvas"></canvas>
+    </div>
+
+    <!-- Scripts -->
+    <script src="particles.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
